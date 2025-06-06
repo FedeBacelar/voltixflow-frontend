@@ -1,0 +1,146 @@
+@use '../../../../../styles/variables' as *;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $color-bg-dark;
+  padding: $spacing-md;
+}
+
+.login-card {
+  background-color: $color-bg-card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  padding: $spacing-lg;
+  width: 90%;
+  max-width: 25rem;
+  text-align: center;
+  border: 1px solid $color-border;
+  position: relative;
+}
+
+.login-logo {
+  margin-bottom: $spacing-sm;
+  img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+.login-title {
+  font-family: $font-family-base;
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  user-select: none;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-xxs;
+
+    label {
+      font-size: 0.875rem;
+      color: $color-text-secondary;
+      text-align: left;
+    }
+
+    input {
+      background-color: #070707;
+      border: 1px solid $color-border;
+      border-radius: $radius-sm;
+      padding: $spacing-xs $spacing-sm;
+      font-size: 1rem;
+      color: $color-text-primary;
+      transition: border-color $transition-fast, box-shadow $transition-fast;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+        box-shadow: $shadow-focus;
+        background-color: darken($color-bg-card, 3%);
+      }
+
+      &::placeholder {
+        color: $color-text-secondary;
+      }
+    }
+
+    .error-msg {
+      font-size: 0.75rem;
+      color: $color-danger;
+      min-height: 1em;
+      text-align: left;
+    }
+  }
+}
+
+.form-error-general {
+  color: $color-danger;
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+  margin-bottom: $spacing-sm;
+  text-align: left;
+}
+
+.btn-login {
+  align-self: center;
+  background-color: $color-primary;
+  color: $color-text-primary;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: $spacing-sm $spacing-xxl;
+  font-size: 1rem;
+  font-weight: 300;
+  transition: background-color $transition-fast, opacity $transition-fast;
+  cursor: pointer;
+  margin-top: $spacing-sm;
+  min-width: 10rem;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.login-footer {
+  user-select: none;
+  margin-top: $spacing-xl;
+  line-height: 1.2;
+
+  .version {
+    font-size: 1.25rem;
+    color: $color-text-primary;
+    margin-bottom: $spacing-xxs;
+    font-weight: 500;
+  }
+
+  .date {
+    color: $color-text-secondary;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-card {
+    padding: $spacing-md;
+  }
+
+  .login-title {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+}

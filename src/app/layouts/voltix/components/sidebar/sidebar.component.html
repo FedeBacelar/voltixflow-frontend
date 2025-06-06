@@ -1,0 +1,40 @@
+<div class="sidebar-container">
+  <div class="sidebar-header">
+    <div class="user-data">
+      <div class="user-info">
+        <h4 class="user-name" *ngIf="userName">{{ userName }}</h4>
+        <h2 class="user-rol-name" *ngIf="userRole">{{ userRole }}</h2>
+      </div>
+      <div class="user-image">
+        <img src="assets/images/UserIcon.svg" alt="UserIcon" />
+      </div>
+    </div>
+    <div class="user-options">
+      <button class="btn-logout" (click)="logout()">
+        <i class="material-icons logout-icon">logout</i>
+        <span>Cerrar Sesión</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="sidebar-body">
+    <ng-container *ngFor="let item of menu">
+      <div *hasPermission="item.permission">
+        <a
+          class="sidebar-link"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="material-icons link-icon">{{ item.icon }}</i>
+          <h3 class="link-title">{{ item.label }}</h3>
+          <h3 class="link-hotkey">{{ item.hotkey }}</h3>
+        </a>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="sidebar-footer">
+    <img class="voltix-flow-logo" src="assets/images/VoltixFlow.svg" alt="Voltix Flow" />
+  </div>
+</div>
