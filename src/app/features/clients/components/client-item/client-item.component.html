@@ -1,0 +1,29 @@
+<div class="client-item">
+
+  <div class="client-info-container">
+    <div class="client-info-primary">
+      <i class="material-icons client-icon">{{client.clientType.name == 'Mayorista' ? 'domain' : 'person'}}</i>
+      <h4 class="client-name">{{client.name}}</h4>
+    </div>
+    <div class="client-info-secondary">
+      <h5 class="info-secondary">CUIT:</h5>
+      <h5 class="info-secondary">{{client.cuit}}</h5>
+    </div>
+    <div class="client-info-secondary">
+      <h5 class="info-secondary">Contacto:</h5>
+      <h5 class="info-secondary">{{client.contact}}</h5>
+      <span class="separator"></span>
+      <h5 class="info-secondary">{{client.phone}}</h5>
+      <span class="separator"></span>
+      <h5 class="info-secondary">{{client.email}}</h5>
+    </div>
+    <div class="client-info-secondary">
+      <h5 class="info-secondary">Direccion:</h5>
+      <h5 class="info-secondary">{{client.address}}</h5>
+    </div>
+  </div>
+  <div class="client-options">
+    <span class="client-status" [ngClass]="client.status ? 'active' : 'inactive'">{{client.status? 'Activo' : 'Inactivo'}}</span>
+    <button role="button" class="client-edit" (click)="edit.emit(client)">Editar</button>
+  </div>
+</div>

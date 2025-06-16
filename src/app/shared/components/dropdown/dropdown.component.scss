@@ -1,0 +1,43 @@
+@use '../../../../styles/variables' as *;
+
+.dropdown {
+  position: relative;
+  user-select: none;
+
+  .dropdown-trigger {
+    padding: $spacing-xxs $spacing-sm;
+    background-color: $color-bg-dark;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    color: $color-text-primary;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(0.8rem, 5vw, 1rem);
+    min-width: clamp(8rem, 5vw, 12rem);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    background-color: $color-bg-dark;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    width: 100%;
+    margin-top: $spacing-xs;
+    font-size: clamp(0.7rem, 5vw, 0.9rem);
+  }
+
+  .dropdown-item {
+    padding: $spacing-xs;
+    color: $color-text-primary;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-border;
+    }
+  }
+}

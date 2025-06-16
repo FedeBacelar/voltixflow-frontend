@@ -1,0 +1,45 @@
+@use '../../../../styles/variables' as *;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.modal-box {
+  position: relative;
+  background-color: $color-bg-dark;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  min-width: $spacing-xxl;
+  min-height: $spacing-xxl;
+  width: auto;
+  max-width: 90%;
+  max-height: 90%;
+
+  .close-button{
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    color: white;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.15);
+    }
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-content {
+  margin-top: 1rem;
+}

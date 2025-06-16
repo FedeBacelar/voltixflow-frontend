@@ -1,0 +1,14 @@
+<div class="filter-container">
+  <app-dropdown
+    [options]="filterOptions"
+    (selected)="onFilterSelected($event)"
+  ></app-dropdown>
+
+  <input
+    class="search-input"
+    type="text"
+    placeholder="Buscar..."
+    [(ngModel)]="selectedFilter.value"
+    (keydown.enter)="search()"
+  />
+</div>
