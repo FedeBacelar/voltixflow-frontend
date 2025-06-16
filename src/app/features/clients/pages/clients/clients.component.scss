@@ -41,8 +41,22 @@
   overflow-y: auto;
   padding:  0 $spacing-xs 0 $spacing-xxs;
 }
-
-
 .sentinel {
   height: 1px;
+}
+
+.client-footer{
+  display: flex;
+  flex-direction: row;
+  padding: $spacing-md;
+  justify-content: end;
+  align-items: center;
+  .create-client{
+    background-color: $color-primary;
+    border: 1px solid $color-border;
+    font-size: clamp(1.2rem, 5vw, 1.4rem);
+    color: $color-text-primary;
+    border-radius: $radius-sm;
+    padding: $spacing-xxs $spacing-xs;
+  }
 }

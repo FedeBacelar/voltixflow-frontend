@@ -11,15 +11,16 @@
 }
 
 .modal-box {
+  overflow: auto;
   position: relative;
   background-color: $color-bg-dark;
-  padding: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
   border-radius: $radius-md;
   min-width: $spacing-xxl;
   min-height: $spacing-xxl;
   width: auto;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 95%;
+  max-height: 95%;
 
   .close-button{
     font-size: clamp(1rem, 5vw, 1.5rem);

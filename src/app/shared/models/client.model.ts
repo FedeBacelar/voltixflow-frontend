@@ -26,7 +26,7 @@ export interface IGetAllClientQuery {
 
 export interface ICreateClient {
   name: string,
-  clientTypeId: IClientType,
+  clientTypeId: number,
   cuit: string,
   phone: string,
   contact: string,

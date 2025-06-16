@@ -1,0 +1,97 @@
+@use '../../../../../styles/variables' as *;
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin: auto;
+}
+
+.form-title{
+  color: $color-text-primary;
+  font-size: clamp(1.4em, 5vw, 1.8em);
+  font-weight: 100;
+  margin-bottom: $spacing-sm;
+}
+
+.dual-form-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-xl;
+  > * {
+    flex: 1;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-weight: bold;
+  margin-bottom: $spacing-xxs;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  font-size: clamp(1rem, 5vw, 1.2rem);
+  input[type='radio'] {
+    accent-color: $color-primary;
+    width: 0.8em;
+    height: 0.8em;
+  }
+}
+.radio-inputs{
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-md;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+input, select, textarea {
+  padding: $spacing-xs;
+  font-size: clamp(1em, 5vw ,1.2em);
+  background-color: $color-bg-input;
+  resize: none;
+}
+.footer-actions{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+  align-self: flex-start;
+  margin: $spacing-sm 0;
+  padding: $spacing-xs $spacing-lg;
+  background-color: $color-secondary;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: white;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: clamp(1.1em, 5vw ,1.3em);
+  &[type="submit"] {
+    background-color: $color-primary;
+  }
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 0.2em;
+}

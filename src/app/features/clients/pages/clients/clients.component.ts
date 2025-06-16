@@ -6,7 +6,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {ClientItemComponent} from "../../components/client-item/client-item.component";
 import {IFilterOption} from "../../../../shared/models/filterOption";
 import {SearchFilterComponent} from "../../../../shared/components/search-filter/search-filter.component";
-import {ModalContainerComponent} from "../../../../shared/components/modal-container/modal-container.component";
+import {ClientCreateModalComponent} from "../../components/client-create-modal/client-create-modal.component";
 
 @Component({
   selector: 'app-clients',
@@ -15,8 +15,8 @@ import {ModalContainerComponent} from "../../../../shared/components/modal-conta
     NgForOf,
     ClientItemComponent,
     SearchFilterComponent,
-    ModalContainerComponent,
-    NgIf
+    NgIf,
+    ClientCreateModalComponent
   ],
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.scss'
@@ -46,6 +46,7 @@ export class ClientsComponent implements OnDestroy, AfterViewInit {
   private forceGet:boolean = false;
 
   clientSelected:IClient | undefined = undefined;
+  openCreateModal:boolean = true;
 
 
   constructor(private clientApiService: ClientApiService) {}

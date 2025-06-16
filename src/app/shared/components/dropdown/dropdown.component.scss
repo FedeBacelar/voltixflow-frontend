@@ -6,7 +6,7 @@
 
   .dropdown-trigger {
     padding: $spacing-xxs $spacing-sm;
-    background-color: $color-bg-dark;
+    background-color: $color-bg-input;
     border: 1px solid $color-border;
     border-radius: $radius-sm;
     color: $color-text-primary;
@@ -23,7 +23,7 @@
     top: 100%;
     left: 0;
     z-index: 100;
-    background-color: $color-bg-dark;
+    background-color: $color-bg-input;
     border: 1px solid $color-border;
     border-radius: $radius-sm;
     width: 100%;

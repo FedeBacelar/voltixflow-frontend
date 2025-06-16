@@ -16,5 +16,13 @@
   <div #clientListBottom class="sentinel"></div>
 </div>
 
+<div class="client-footer">
+  <button class="create-client" (click)="openCreateModal = true">Nuevo Cliente</button>
+</div>
 
-<app-modal-container *ngIf="clientSelected" (close)="clientSelected = undefined"></app-modal-container>
+
+<app-client-create-modal
+  *ngIf="openCreateModal"
+  (close)="openCreateModal = false"
+  (clientEdited)="openCreateModal = false">
+</app-client-create-modal>
