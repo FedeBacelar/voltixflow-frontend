@@ -91,7 +91,16 @@
 
     <div class="footer-actions">
       <button type="button" (click)="closeModal()">Cancelar</button>
-      <button type="submit" [disabled]="form.invalid">Agregar</button>
+      <div class="footer-divider">
+        <button type="button" class="delete" (click)="openDeleteDialog = true">Borrar</button>
+        <button type="submit" [disabled]="form.invalid">Modificar</button>
+      </div>
     </div>
   </form>
 </app-modal-container>
+
+<app-confirm-dialog *ngIf="openDeleteDialog"
+  [message]="'¿Seguro que querés eliminar este cliente?'"
+  (confirm)="deleteClient()"
+  (cancel)="openDeleteDialog = false"
+></app-confirm-dialog>

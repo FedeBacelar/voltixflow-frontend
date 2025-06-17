@@ -69,6 +69,12 @@ input, select, textarea {
   justify-content: space-between;
   align-items: center;
 }
+.footer-divider{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: $spacing-md;
+}
 button {
   align-self: flex-start;
   margin: $spacing-sm 0;
@@ -76,7 +82,7 @@ button {
   background-color: $color-secondary;
   border: 1px solid $color-border;
   border-radius: $radius-sm;
-  color: white;
+  color: $color-text-primary;
   cursor: pointer;
   font-weight: 100;
   font-size: clamp(1.1em, 5vw ,1.3em);
@@ -87,6 +93,14 @@ button {
     background-color: $color-primary;
     &:hover{
       background-color: #185b9d;
+    }
+  }
+  &.delete{
+    background-color: $color-secondary;
+    color: $color-danger;
+    &:hover{
+      background-color: $color-danger;
+      color: $color-text-primary;
     }
   }
 }

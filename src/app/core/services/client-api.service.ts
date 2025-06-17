@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, take, shareReplay } from 'rxjs/operators';
+import {Observable, of, throwError} from 'rxjs';
+import {catchError, take, shareReplay, map} from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import {IClient, ICreateClient, IGetAllClientQuery} from '../../shared/models/client.model';
+import {IClient, IClientType, ICreateClient, IGetAllClientQuery, IUpdateClient} from '../../shared/models/client.model';
 
 @Injectable({ providedIn: 'root' })
 export class ClientApiService {
   private baseUrl = `${environment.apiBaseUrl}/Client`;
+
+  private clientTypes$: Observable<IClientType[]> | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -62,5 +64,40 @@ export class ClientApiService {
       );
   }
 
+  public updateClient(clientId:number,client: IUpdateClient): Observable<IClient> {
+    return this.http.put<IClient>(`${this.baseUrl}/${clientId}`, client)
+      .pipe(
+        take(1),
+        catchError(this.handleError('getClientById'))
+      );
+  }
+
+  public deleteClient(clientId: number): Observable<boolean> {
+    return this.http.delete<IClient>(`${this.baseUrl}/${clientId}`)
+      .pipe(
+        take(1),
+        map(() => true),
+        catchError(error => {
+          this.handleError('deleteClient')(error);
+          return of(false);
+        })
+      );
+  }
+
+  public getAllClientTypes(): Observable<IClientType[]> {
+    if (!this.clientTypes$) {
+      this.clientTypes$ = this.http
+        .get<IClientType[]>(`${this.baseUrl}/types`)
+        .pipe(
+          take(1),
+          shareReplay({ bufferSize: 1, refCount: false }),
+          catchError(err => {
+            this.clientTypes$ = null;
+            return throwError(() => err);
+          })
+        );
+    }
+    return this.clientTypes$;
+  }
 
 }

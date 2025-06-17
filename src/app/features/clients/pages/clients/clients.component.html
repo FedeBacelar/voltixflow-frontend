@@ -24,5 +24,12 @@
 <app-client-create-modal
   *ngIf="openCreateModal"
   (close)="openCreateModal = false"
-  (clientEdited)="openCreateModal = false">
+  (clientCreated)="resetClientList()">
 </app-client-create-modal>
+
+<app-client-edit-modal
+  *ngIf="clientSelected"
+  (close)="clientSelected = undefined"
+  [client]="clientSelected!"
+  (clientEdited)="resetClientList()">
+</app-client-edit-modal>

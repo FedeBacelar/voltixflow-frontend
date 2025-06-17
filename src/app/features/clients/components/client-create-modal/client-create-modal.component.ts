@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {ModalContainerComponent} from "../../../../shared/components/modal-container/modal-container.component";
-import {ICreateClient} from "../../../../shared/models/client.model";
+import {IClientType, ICreateClient} from "../../../../shared/models/client.model";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ClientApiService} from "../../../../core/services/client-api.service";
 
@@ -11,7 +11,8 @@ import {ClientApiService} from "../../../../core/services/client-api.service";
   imports: [
     NgIf,
     ModalContainerComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgForOf
   ],
   templateUrl: './client-create-modal.component.html',
   styleUrl: './client-create-modal.component.scss'
@@ -19,12 +20,16 @@ import {ClientApiService} from "../../../../core/services/client-api.service";
 export class ClientCreateModalComponent implements OnInit{
 
   @Output() close:EventEmitter<void> = new EventEmitter<void>();
-  @Output() clientEdited:EventEmitter<void> = new EventEmitter<void>();
+  @Output() clientCreated:EventEmitter<void> = new EventEmitter<void>();
+
+  clientTypes:IClientType[] = []
+  form!: FormGroup;
 
   constructor(private fb:FormBuilder, private clientApiService:ClientApiService) {
+    this.clientApiService.getAllClientTypes().subscribe((clientTypes:IClientType[]) => {
+      if(clientTypes.length > 0) this.clientTypes = clientTypes;
+    })
   }
-
-  form!: FormGroup;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -47,7 +52,7 @@ export class ClientCreateModalComponent implements OnInit{
 
     this.clientApiService.createClient(clientData).subscribe({
       next: () => {
-        this.clientEdited.emit();
+        this.clientCreated.emit();
         this.closeModal();
       },
       error: (err) => {

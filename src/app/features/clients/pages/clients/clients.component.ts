@@ -7,6 +7,7 @@ import {ClientItemComponent} from "../../components/client-item/client-item.comp
 import {IFilterOption} from "../../../../shared/models/filterOption";
 import {SearchFilterComponent} from "../../../../shared/components/search-filter/search-filter.component";
 import {ClientCreateModalComponent} from "../../components/client-create-modal/client-create-modal.component";
+import {ClientEditModalComponent} from "../../components/client-edit-modal/client-edit-modal.component";
 
 @Component({
   selector: 'app-clients',
@@ -16,7 +17,8 @@ import {ClientCreateModalComponent} from "../../components/client-create-modal/c
     ClientItemComponent,
     SearchFilterComponent,
     NgIf,
-    ClientCreateModalComponent
+    ClientCreateModalComponent,
+    ClientEditModalComponent
   ],
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.scss'
@@ -46,7 +48,7 @@ export class ClientsComponent implements OnDestroy, AfterViewInit {
   private forceGet:boolean = false;
 
   clientSelected:IClient | undefined = undefined;
-  openCreateModal:boolean = true;
+  openCreateModal:boolean = false;
 
 
   constructor(private clientApiService: ClientApiService) {}
@@ -98,8 +100,13 @@ export class ClientsComponent implements OnDestroy, AfterViewInit {
         this.filterByEmail = filter.value
         break;
     }
+    this.resetClientList();
+  }
+
+  resetClientList(){
+    this.openCreateModal = false;
     this.pageNumber = 1;
-    this.clients = []
+    this.clients = [];
     this.loadPage();
   }
 

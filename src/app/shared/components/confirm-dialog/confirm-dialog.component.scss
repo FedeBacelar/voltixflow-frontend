@@ -1,0 +1,45 @@
+@use '../../../../styles/variables' as *;
+
+.dialog-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-message{
+  color: $color-text-primary;
+  font-size: clamp(1.2em, 5vw, 1.4em);
+  font-weight: 100;
+  margin: $spacing-sm 0;
+}
+.dialog-options{
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  margin: $spacing-sm 0;
+  padding: $spacing-xxs $spacing-lg;
+  background-color: $color-secondary;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: white;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: clamp(1.1em, 5vw ,1.3em);
+  &.primary {
+    background-color: $color-primary;
+    &:hover{
+      background-color: #185b9d;
+    }
+  }
+  &.secondary{
+    background-color: $color-secondary;
+    &:hover{
+      background-color: $color-border;
+    }
+  }
+}

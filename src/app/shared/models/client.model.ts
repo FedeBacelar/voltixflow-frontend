@@ -35,3 +35,15 @@ export interface ICreateClient {
   status: true,
   observations: string
 }
+
+export interface IUpdateClient {
+  name: string,
+  clientTypeId: number,
+  cuit: string,
+  phone: string,
+  contact: string,
+  email: string,
+  address: string,
+  status: true,
+  observations: string
+}
