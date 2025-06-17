@@ -1,0 +1,9 @@
+<app-modal-container (close)="closeDialog()">
+  <div class="dialog-container">
+    <h2 class="dialog-message">{{message}}</h2>
+    <div class="dialog-options">
+      <button class="secondary" (click)="closeDialog()">Cancelar</button>
+      <button class="primary" (click)="confirmDialog()">Confirmar</button>
+    </div>
+  </div>
+</app-modal-container>

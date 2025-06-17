@@ -1,0 +1,106 @@
+<app-modal-container (close)="closeModal()">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" aria-labelledby="createClientTitle">
+    <h2 class="form-title">Nuevo Cliente</h2>
+
+    <div class="form-group">
+      <label for="name">Nombre / Razón Social</label>
+      <input id="name" type="text" formControlName="name" required aria-required="true" placeholder="Nombre / Razón Social del cliente"/>
+      <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="error-message">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div role="radiogroup" aria-labelledby="clientTypeLabel" class="dual-form-group">
+      <label id="clientTypeLabel">Tipo de cliente:</label>
+      <div class="radio-inputs">
+        <ng-container *ngFor="let clientType of clientTypes">
+          <label class="clickable">
+            <input
+              class="clickable"
+              type="radio"
+              formControlName="clientTypeId"
+              [value]="clientType.id"
+              [attr.aria-checked]="form.get('clientTypeId')?.value === clientType.id"
+            />
+            {{clientType.name}}
+          </label>
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="form.get('clientTypeId')?.invalid && form.get('clientTypeId')?.touched" class="error-message">
+      Seleccione un tipo de cliente.
+    </div>
+
+    <div class="dual-form-group">
+      <div class="form-group">
+        <label for="cuit">CUIT</label>
+        <input id="cuit" type="text" formControlName="cuit" placeholder="CUIT del cliente" />
+        <div *ngIf="form.get('cuit')?.invalid && form.get('cuit')?.touched" class="error-message">
+          CUIT inválido. Formato esperado: 20-12345678-9
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <input id="phone" type="tel" formControlName="phone" placeholder="Teléfono del cliente"/>
+        <div *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched" class="error-message">
+          El teléfono es obligatorio.
+        </div>
+      </div>
+    </div>
+
+    <div class="dual-form-group">
+      <div class="form-group">
+        <label for="contact">Contacto</label>
+        <input id="contact" type="text" formControlName="contact" placeholder="Contacto del cliente"/>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Mail</label>
+        <input id="email" type="email" formControlName="email" placeholder="Mail del cliente"/>
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error-message">
+          Email inválido.
+        </div>
+      </div>
+    </div>
+
+    <div class="dual-form-group">
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input id="address" type="text" formControlName="address" placeholder="Dirección del cliente"/>
+        <div *ngIf="form.get('address')?.invalid && form.get('address')?.touched" class="error-message">
+          La dirección es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Estado</label>
+        <select id="status" formControlName="status" required aria-required="true">
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
+        <div *ngIf="form.get('status')?.invalid && form.get('status')?.touched" class="error-message">
+          Seleccione un estado válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="observations">Observaciones</label>
+      <textarea id="observations" formControlName="observations" rows="2"></textarea>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" (click)="closeModal()">Cancelar</button>
+      <div class="footer-divider">
+        <button type="button" class="delete" (click)="openDeleteDialog = true">Borrar</button>
+        <button type="submit" [disabled]="form.invalid">Modificar</button>
+      </div>
+    </div>
+  </form>
+</app-modal-container>
+
+<app-confirm-dialog *ngIf="openDeleteDialog"
+  [message]="'¿Seguro que querés eliminar este cliente?'"
+  (confirm)="deleteClient()"
+  (cancel)="openDeleteDialog = false"
+></app-confirm-dialog>

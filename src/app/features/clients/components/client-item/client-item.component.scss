@@ -1,0 +1,109 @@
+@use '../../../../../styles/variables' as *;
+
+:host {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.client-item {
+  width: 100%;
+  background-color: $color-card-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: $spacing-xxs $spacing-xs;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+
+}
+.client-info-container{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.client-info-primary{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  .client-icon{
+    font-size: clamp(0.7rem, 5vw, 1.4rem);
+    margin: 0 $spacing-xxs 0 0;
+    line-height: 1.5;
+  }
+  .client-name{
+    margin: 0;
+    font-family: $font-family-base;
+    font-size: clamp(0.5rem, 5vw, 1.2rem);
+    color: $color-text-primary;
+    font-weight: 400;
+    user-select: none;
+  }
+}
+
+.client-info-secondary{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  overflow: hidden;
+  .info-secondary{
+    margin: 0 $spacing-xxs 0 0;
+    font-family: $font-family-base;
+    font-size: clamp(0.5rem, 5vw, 0.9rem);
+    color: $color-text-secondary;
+    font-weight: 100;
+    user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .separator{
+    align-self: center;
+    justify-self: center;
+    margin: 0 $spacing-xxs 0 0;
+    background-color: $color-text-secondary;
+    width: clamp(0.1rem, 5vw, 0.3rem);
+    height: clamp(0.1rem, 5vw, 0.3rem);
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+}
+
+
+.client-options{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  .client-status{
+    border-radius: $radius-md;
+    font-family: $font-family-base;
+    font-size: clamp(0.5rem, 5vw, 0.9rem);
+    color: $color-text-primary;
+    font-weight: 100;
+    user-select: none;
+    padding: 0 $spacing-xs;
+    margin-top: $spacing-xxs;
+    &.active{
+      background-color: $color-primary;
+    }
+    &.inactive{
+      background-color: $color-danger;
+    }
+  }
+  .client-edit{
+    background-color: $color-bg-card;
+    border: 1px solid $color-border;
+    padding: $spacing-xxs clamp($spacing-md, 5vw, $spacing-xl);
+
+    font-size: clamp(0.5rem, 5vw, 0.9rem);
+    color: $color-text-primary;
+    font-weight: 100;
+    margin-bottom: $spacing-xxs;
+    &:hover{
+      background-color: $color-bg-dark;
+    }
+  }
+}

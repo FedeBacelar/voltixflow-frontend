@@ -1,16 +1,35 @@
-<div class="under-construction-container">
-  <div class="message-box">
-    <i class="material-icons build-icon">construction</i>
-
-    <h1 class="uc-title">Módulo en construcción</h1>
-
-    <p class="uc-text">
-      El módulo <strong>{{ 'Clientes' }}</strong> está en construcción.
-      Estará disponible en la próxima actualización.
-    </p>
-
-    <p class="uc-subtext">
-      Si necesitas acceso o más detalles, contacta al equipo de Desarrollo.
-    </p>
+<div class="client-header">
+  <div class="client-title">
+    <i class="material-icons title-icon">group</i>
+    <h2 class="title-value">Clientes</h2>
+  </div>
+  <div class="client-search-options">
+    <app-search-filter (filter)="filterEvent($event)" [filterOptions]="filterOptions"></app-search-filter>
   </div>
 </div>
+
+
+<div class="client-list" role="list" #listContainer>
+  <ng-container *ngFor="let client of clients">
+    <app-client-item (edit)="clientSelected = $event" role="listitem" [client]="client"></app-client-item>
+  </ng-container>
+  <div #clientListBottom class="sentinel"></div>
+</div>
+
+<div class="client-footer">
+  <button class="create-client" (click)="openCreateModal = true">Nuevo Cliente</button>
+</div>
+
+
+<app-client-create-modal
+  *ngIf="openCreateModal"
+  (close)="openCreateModal = false"
+  (clientCreated)="resetClientList()">
+</app-client-create-modal>
+
+<app-client-edit-modal
+  *ngIf="clientSelected"
+  (close)="clientSelected = undefined"
+  [client]="clientSelected!"
+  (clientEdited)="resetClientList()">
+</app-client-edit-modal>

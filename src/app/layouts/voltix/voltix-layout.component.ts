@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {RouterOutlet} from "@angular/router";
-import {ToastContainerComponent} from "../../shared/components/toast-container.component";
+import {ToastContainerComponent} from "../../shared/components/toast/toast-container.component";
 
 @Component({
   selector: 'app-voltix-layout',

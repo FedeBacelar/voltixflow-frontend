@@ -1,0 +1,26 @@
+@use '../../../../styles/variables' as *;
+
+.filter-container {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+}
+
+.search-input {
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid $color-border;
+  border-radius: 5px;
+  background-color: $color-bg-input;
+  color: $color-text-primary;
+  font-size: 1rem;
+  width: 200px;
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
