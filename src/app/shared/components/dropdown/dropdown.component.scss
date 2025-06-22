@@ -1,5 +1,10 @@
 @use '../../../../styles/variables' as *;
 
+:host.ng-invalid.ng-touched{
+  .dropdown-trigger{
+    border: 1px solid red;
+  }
+}
 .dropdown {
   position: relative;
   user-select: none;
@@ -9,13 +14,17 @@
     background-color: $color-bg-input;
     border: 1px solid $color-border;
     border-radius: $radius-sm;
-    color: $color-text-primary;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: clamp(0.8rem, 5vw, 1rem);
     min-width: clamp(8rem, 5vw, 12rem);
+  }
+
+  &.disabled .dropdown-trigger {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .dropdown-menu {
@@ -28,7 +37,6 @@
     border-radius: $radius-sm;
     width: 100%;
     margin-top: $spacing-xs;
-    font-size: clamp(0.7rem, 5vw, 0.9rem);
   }
 
   .dropdown-item {

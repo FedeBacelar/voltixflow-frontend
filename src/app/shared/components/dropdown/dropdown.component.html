@@ -1,6 +1,11 @@
-<div class="dropdown"  #dropdownRef [class.open]="isOpen">
-  <div class="dropdown-trigger" (click)="onDropdownClick($event)">{{ selectedLabel }}<i class="material-icons">expand_more</i></div>
+<div class="dropdown" #dropdownRef [class.open]="isOpen" [class.disabled]="isDisabled">
+  <div class="dropdown-trigger" (click)="onDropdownClick($event)">
+    {{ selectedLabel }}
+    <i class="material-icons">expand_more</i>
+  </div>
   <div class="dropdown-menu" *ngIf="isOpen">
-    <div class="dropdown-item" *ngFor="let option of options" (click)="selectOption(option)">{{ option.label }}</div>
+    <div class="dropdown-item" *ngFor="let option of options" (click)="selectOption(option)">
+      {{ option.label }}
+    </div>
   </div>
 </div>

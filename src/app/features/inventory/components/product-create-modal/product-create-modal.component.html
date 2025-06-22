@@ -1,0 +1,55 @@
+<app-modal-container (close)="closeModal()">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" aria-labelledby="createProductTitle">
+    <h2 class="form-title" id="createProductTitle">Nuevo Producto</h2>
+
+    <div class="form-group">
+      <label for="name">Nombre del Producto</label>
+      <input id="name" type="text" formControlName="name" placeholder="Ingrese el nombre del producto" />
+    </div>
+
+    <div class="form-group">
+      <label for="internalCode">Código Interno</label>
+      <input id="internalCode" type="text" formControlName="internalCode" placeholder="Ingrese el código del producto" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <input id="description" type="text" formControlName="description" placeholder="Ingrese una descripción" />
+    </div>
+
+    <div class="form-group">
+      <label>Categoría</label>
+      <app-dropdown formControlName="categoryId" [options]="productCategoriesOptions" [initialText]="'Seleccionar'"></app-dropdown>
+    </div>
+
+    <div class="form-group">
+      <label for="estimatedCostPrice">Precio Estimado</label>
+      <input id="estimatedCostPrice" type="number" formControlName="estimatedCostPrice" placeholder="Ingrese el precio estimado" />
+    </div>
+
+    <div class="form-group">
+      <label for="currentStock">Stock Actual</label>
+      <input id="currentStock" type="number" formControlName="currentStock" placeholder="Ingrese el stock del producto" />
+    </div>
+
+    <div class="form-group">
+      <label for="stockAlert">Alerta de Stock</label>
+      <input id="stockAlert" type="number" formControlName="stockAlert" placeholder="Ingrese el umbral de alerta" />
+    </div>
+
+    <div class="form-group">
+      <label>Estado</label>
+      <app-dropdown formControlName="status" [options]="stateOptions"></app-dropdown>
+    </div>
+
+    <div class="form-group">
+      <label for="observations">Observaciones</label>
+      <textarea id="observations" formControlName="observations" rows="3" placeholder="Ingrese observaciones si es necesario"></textarea>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Agregar</button>
+    </div>
+  </form>
+</app-modal-container>

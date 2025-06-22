@@ -1,4 +1,4 @@
-export interface IFilterOption {
+export interface IDropOption {
   label: string,
-  value: string
+  value: any
 }
