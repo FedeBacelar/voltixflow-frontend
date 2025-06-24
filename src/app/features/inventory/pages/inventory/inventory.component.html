@@ -1,16 +1,39 @@
-<div class="under-construction-container">
-  <div class="message-box">
-    <i class="material-icons build-icon">construction</i>
-
-    <h1 class="uc-title">Módulo en construcción</h1>
-
-    <p class="uc-text">
-      El módulo <strong>{{ 'Stock' }}</strong> está en construcción.
-      Estará disponible en la próxima actualización.
-    </p>
-
-    <p class="uc-subtext">
-      Si necesitas acceso o más detalles, contacta al equipo de Desarrollo.
-    </p>
+<div class="inventory-header">
+  <div class="inventory-title">
+    <i class="material-icons title-icon">inventory_2</i>
+    <h2 class="title-value">Inventario</h2>
+  </div>
+  <div class="inventory-search-options">
+    <app-search-filter (filter)="filterEvent($event)" [filterOptions]="filterOptions"></app-search-filter>
   </div>
 </div>
+
+
+<div class="product-list" role="list" #listContainer>
+  <ng-container *ngFor="let product of products">
+    <app-product-item (edit)="productSelected = $event" role="listitem" [product]="product"></app-product-item>
+  </ng-container>
+  <div #productListBottom class="sentinel"></div>
+</div>
+
+<div class="inventory-footer">
+  <button class="create-product" (click)="openCreateCategoryModal = true">Editar Categorias</button>
+  <button class="create-product" (click)="openCreateModal = true">Nuevo Producto</button>
+</div>
+
+<app-product-create-modal
+  *ngIf="openCreateModal"
+  (close)="openCreateModal = false"
+  (productCreated)="resetProductList()">
+</app-product-create-modal>
+
+<app-product-edit-modal
+  *ngIf="productSelected"
+  (close)="productSelected = undefined"
+  [product]="productSelected!"
+  (productEdited)="resetProductList()">
+</app-product-edit-modal>
+
+<app-categories-manager-modal
+  *ngIf="openCreateCategoryModal"
+  (close)="openCreateCategoryModal = false"></app-categories-manager-modal>

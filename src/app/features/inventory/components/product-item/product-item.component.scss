@@ -1,0 +1,130 @@
+@use '../../../../../styles/variables' as *;
+
+:host {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.product-item {
+  width: 100%;
+  background-color: $color-card-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: $spacing-xxs $spacing-xs;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+
+}
+.product-info-container{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.product-primary-info-container{
+  display: flex;
+  flex-direction: row;
+}
+.product-icon{
+  font-size: 3rem;
+  margin-right: $spacing-sm;
+}
+.primary-info-item-container{
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  .info-item-title{
+    color: $color-text-primary;
+    font-size: clamp(0.7rem, 5vw, 1.1rem);
+    margin: 0;
+    font-weight: 600;
+  }
+  .info-item-description{
+    color: $color-text-secondary;
+    font-size: clamp(0.5rem, 5vw, 1rem);
+    margin: 0;
+    font-weight: 100;
+  }
+}
+.product-secondary-row-info-container{
+  margin-top: $spacing-xs;
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-md;
+}
+.info-item-container{
+  display: flex;
+  flex-direction: column;
+  .info-item-title{
+    color: $color-text-primary;
+    font-size: clamp(0.6rem, 5vw, 0.95rem);
+    margin: 0;
+    font-weight: 600;
+  }
+  .info-item-description{
+    color: $color-text-secondary;
+    font-size: clamp(0.5rem, 5vw, 0.85rem);
+    margin: 0;
+    font-weight: 100;
+  }
+  .info-item-status{
+    align-self: stretch;
+    justify-self: stretch;
+    text-align: center;
+    font-size: clamp(0.5rem, 5vw, 0.8rem);
+    border-radius: $radius-md;
+    padding: 0.05rem;
+    margin: 0;
+    &.ok{
+      background-color: $color-success;
+    }
+    &.low{
+      background-color: $color-warning;
+    }
+    &.none{
+      background-color: $color-danger;
+    }
+  }
+}
+
+
+.product-options{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  .product-status{
+    border-radius: $radius-md;
+    font-family: $font-family-base;
+    font-size: clamp(0.5rem, 5vw, 0.9rem);
+    color: $color-text-primary;
+    font-weight: 100;
+    user-select: none;
+    padding: 0 $spacing-xs;
+    margin-top: $spacing-xxs;
+    &.active{
+      background-color: $color-primary;
+    }
+    &.inactive{
+      background-color: $color-danger;
+    }
+  }
+  .product-edit{
+    background-color: $color-bg-card;
+    border: 1px solid $color-border;
+    padding: $spacing-xxs clamp($spacing-md, 5vw, $spacing-xl);
+
+    font-size: clamp(0.5rem, 5vw, 0.9rem);
+    color: $color-text-primary;
+    font-weight: 100;
+    margin-bottom: $spacing-xxs;
+    &:hover{
+      background-color: $color-bg-dark;
+    }
+  }
+}

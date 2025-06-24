@@ -1,0 +1,18 @@
+<app-modal-container (close)="closeModal()">
+  <h2 class="title">Editar Categorias</h2>
+  <div class="line"></div>
+  <div class="category-items">
+    <app-category-item
+      *ngFor="let category of categories"
+      [item]="category"
+      [iconOptions]="googleIcons"
+      (save)="onSave(category, $event)"
+      (update)="onUpdate(category, $event)"
+      (delete)="onDelete($event)"
+    ></app-category-item>
+  </div>
+  <div class="add-container">
+    <i class="material-icons add" (click)="addCategory()">add</i>
+  </div>
+</app-modal-container>
+

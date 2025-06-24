@@ -1,0 +1,111 @@
+@use '../../../../../styles/variables' as *;
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin: auto;
+}
+
+.form-title{
+  color: $color-text-primary;
+  font-size: clamp(1.4em, 5vw, 1.8em);
+  font-weight: 100;
+  margin-bottom: $spacing-sm;
+}
+
+.dual-form-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-xl;
+  > * {
+    flex: 1;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+label {
+  align-self: start;
+  margin-bottom: $spacing-xxs;
+  display: flex;
+  align-items: center;
+  color: $color-text-label;
+  white-space: nowrap;
+  font-size: clamp(1rem, 5vw, 1.2rem);
+  font-weight: 100;
+  min-width: 225px;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+input, select, textarea {
+  padding: $spacing-xs;
+  font-size: clamp(1em, 5vw ,1.2em);
+  background-color: $color-bg-input;
+  resize: none;
+  width: 350px;
+}
+app-dropdown {
+  font-size: clamp(1em, 5vw ,1.2em);
+  background-color: $color-bg-input;
+  resize: none;
+  width: 350px;
+  border-radius: $spacing-xxs;
+}
+.footer-actions{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-divider{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: $spacing-md;
+}
+button {
+  align-self: flex-start;
+  margin: $spacing-sm 0;
+  padding: $spacing-xxs $spacing-lg;
+  background-color: $color-secondary;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: $color-text-primary;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: clamp(1.1em, 5vw ,1.3em);
+  &:hover{
+    background-color: $color-border;
+  }
+  &[type="submit"] {
+    background-color: $color-primary;
+    &:hover{
+      background-color: #185b9d;
+    }
+  }
+  &.delete{
+    background-color: $color-secondary;
+    color: $color-danger;
+    &:hover{
+      background-color: $color-danger;
+      color: $color-text-primary;
+    }
+  }
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

@@ -4,7 +4,7 @@ import {Subject, takeUntil} from "rxjs";
 import {IClient, IGetAllClientQuery} from "../../../../shared/models/client.model";
 import {NgForOf, NgIf} from "@angular/common";
 import {ClientItemComponent} from "../../components/client-item/client-item.component";
-import {IFilterOption} from "../../../../shared/models/filterOption";
+import {IDropOption} from "../../../../shared/models/filterOption";
 import {SearchFilterComponent} from "../../../../shared/components/search-filter/search-filter.component";
 import {ClientCreateModalComponent} from "../../components/client-create-modal/client-create-modal.component";
 import {ClientEditModalComponent} from "../../components/client-edit-modal/client-edit-modal.component";
@@ -35,7 +35,7 @@ export class ClientsComponent implements OnDestroy, AfterViewInit {
   private readonly destroy$ = new Subject<void>();
   private sentinelObserver?: IntersectionObserver;
 
-  public filterOptions:IFilterOption[] = [
+  public filterOptions:IDropOption[] = [
     { label: 'Nombre', value: '' },
     { label: 'CUIT', value: '' },
     { label: 'Mail', value: '' }
@@ -85,7 +85,7 @@ export class ClientsComponent implements OnDestroy, AfterViewInit {
       });
   }
 
-  filterEvent(filter:IFilterOption){
+  filterEvent(filter:IDropOption){
     this.filterByName = '';
     this.filterByCUIT = '';
     this.filterByEmail = '';

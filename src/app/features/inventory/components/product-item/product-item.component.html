@@ -1,0 +1,54 @@
+<div class="product-item">
+
+  <div class="product-info-container">
+    <div class="product-primary-info-container">
+      <i class="material-icons product-icon">{{product.category.googleIcon}}</i>
+      <div class="primary-info-item-container">
+        <h3 class="info-item-title">{{product.name}}</h3>
+        <h2 class="info-item-description">{{product.description}}</h2>
+      </div>
+    </div>
+    <div class="product-secondary-row-info-container">
+      <div class="info-item-container">
+        <h3 class="info-item-title">Categoria</h3>
+        <h2 class="info-item-description">{{product.category.name}}</h2>
+      </div>
+
+      <div class="info-item-container">
+        <h3 class="info-item-title">Codigo interno</h3>
+        <h2 class="info-item-description">{{product.internalCode}}</h2>
+      </div>
+
+      <div class="info-item-container">
+        <h3 class="info-item-title">Precio estimado</h3>
+        <h2 class="info-item-description">{{product.estimatedCostPrice}}</h2>
+      </div>
+
+      <div class="info-item-container">
+        <h3 class="info-item-title">Stock actual</h3>
+        <h2 class="info-item-description">{{product.currentStock}}</h2>
+      </div>
+
+      <div class="info-item-container">
+        <h3 class="info-item-title">Estado</h3>
+        <div
+          class="info-item-status"
+          [ngClass]="product.currentStock == 0? 'none' : product.currentStock < product.stockAlert? 'low' : 'ok'"
+        >
+          {{product.currentStock == 0? 'Agotado' : product.currentStock < product.stockAlert? 'Bajo' : 'Ok'}}
+        </div>
+      </div>
+    </div>
+    <div class="product-secondary-row-info-container">
+      <div class="info-item-container">
+        <h3 class="info-item-title">Observaciones</h3>
+        <h2 class="info-item-description">{{product.observations}}</h2>
+      </div>
+    </div>
+
+  </div>
+  <div class="product-options">
+    <span class="product-status" [ngClass]="product.status ? 'active' : 'inactive'">{{product.status? 'Activo' : 'Inactivo'}}</span>
+    <button role="button" class="product-edit" (click)="edit.emit(product)">Editar</button>
+  </div>
+</div>

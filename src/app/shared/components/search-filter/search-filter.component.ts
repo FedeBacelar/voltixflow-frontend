@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {DropdownComponent} from "../dropdown/dropdown.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {IFilterOption} from "../../models/filterOption";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DropdownComponent } from "../dropdown/dropdown.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { IDropOption } from "../../models/filterOption";
 
 @Component({
   selector: 'app-search-filter',
@@ -16,21 +16,21 @@ import {IFilterOption} from "../../models/filterOption";
 })
 export class SearchFilterComponent {
 
-  @Output() filter:EventEmitter<IFilterOption> = new EventEmitter<IFilterOption>()
-  @Input() filterOptions:IFilterOption[] = [];
+  @Output() filter = new EventEmitter<IDropOption>();
+  @Input() filterOptions: IDropOption[] = [];
 
-  selectedFilter: IFilterOption = {label: '', value: ''};
+  selectedFilter: IDropOption = { label: '', value: '' };
 
-  onFilterSelected(filterBy: string) {
-    if(filterBy != this.selectedFilter.label){
-      this.selectedFilter.value = '';
-      this.selectedFilter.label = filterBy;
+  onFilterSelected(option: IDropOption): void {
+    if (option.label !== this.selectedFilter.label) {
+      this.selectedFilter = { ...option, value: '' };
       this.filter.emit(this.selectedFilter);
     }
   }
 
-  search() {
-    if(this.selectedFilter.label) this.filter.emit(this.selectedFilter);
+  search(): void {
+    if (this.selectedFilter.label) {
+      this.filter.emit(this.selectedFilter);
+    }
   }
-
 }

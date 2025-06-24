@@ -1,0 +1,26 @@
+<div class="category-item" [formGroup]="form">
+  <div class="icon-selector" (click)="toggleDropdown()" tabindex="0">
+    <i class="material-icons icon-selected">{{ form.get('googleIcon')?.value }}</i>
+  </div>
+
+  <div class="icon-dropdown" *ngIf="showDropdown">
+    <div class="icon-option"
+         *ngFor="let icon of iconOptions"
+         (click)="selectIcon(icon)">
+      <i class="material-icons">{{ icon }}</i>
+    </div>
+  </div>
+
+  <input
+    formControlName="name"
+    placeholder="Nombre de categoría"
+    [class.invalid]="isInvalid()"
+    (blur)="form.get('name')?.markAsTouched()"
+  />
+
+  <button type="button" (click)="handleAction()">
+    <i class="material-icons" [style.color]="getIconColor()">
+      {{ getIconName() }}
+    </i>
+  </button>
+</div>

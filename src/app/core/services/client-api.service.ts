@@ -64,6 +64,9 @@ export class ClientApiService {
       );
   }
 
+  /**
+   * Actualiza un cliente existente
+   */
   public updateClient(clientId:number,client: IUpdateClient): Observable<IClient> {
     return this.http.put<IClient>(`${this.baseUrl}/${clientId}`, client)
       .pipe(
@@ -72,6 +75,9 @@ export class ClientApiService {
       );
   }
 
+  /**
+   * Borra un cliente existente
+   */
   public deleteClient(clientId: number): Observable<boolean> {
     return this.http.delete<IClient>(`${this.baseUrl}/${clientId}`)
       .pipe(
@@ -84,6 +90,9 @@ export class ClientApiService {
       );
   }
 
+  /**
+   * Obtiene la lista de todos las tipos de clientes
+   */
   public getAllClientTypes(): Observable<IClientType[]> {
     if (!this.clientTypes$) {
       this.clientTypes$ = this.http
@@ -91,10 +100,7 @@ export class ClientApiService {
         .pipe(
           take(1),
           shareReplay({ bufferSize: 1, refCount: false }),
-          catchError(err => {
-            this.clientTypes$ = null;
-            return throwError(() => err);
-          })
+          catchError(this.handleError('getAllClientTypes'))
         );
     }
     return this.clientTypes$;

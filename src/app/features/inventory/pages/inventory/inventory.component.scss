@@ -1,74 +1,63 @@
 @use '../../../../../styles/variables' as *;
 
-.under-construction-container {
+:host{
   display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.inventory-header{
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+.inventory-title{
+  flex: 1;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-}
-
-.message-box {
-  text-align: center;
-  color: $color-text-primary;
-  padding: $spacing-lg $spacing-md;
-  max-width: 700px;
-  width: 90%;
-  background-color: darken($color-bg-card, 2%);
-  border: 1px solid $color-border;
-  border-radius: $radius-md;
-  box-shadow: $shadow-card;
-}
-
-.build-icon {
-  font-size: 5rem;
-  color: $color-primary;
-  display: inline-block;
-  margin-bottom: $spacing-lg;
-  animation: build-pulse 2s infinite ease-in-out;
-}
-
-.uc-title {
-  font-family: $font-family-base;
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  margin: 0 0 $spacing-md 0;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.uc-text {
-  font-family: $font-family-base;
-  font-size: clamp(1rem, 3.5vw, 1.125rem);
-  margin: 0 0 $spacing-md 0;
-  color: $color-text-secondary;
-  line-height: 1.4;
-
-  strong {
-    color: $color-primary;
+  .title-icon{
+    font-size: clamp(0.9rem, 5vw, 2rem);
+  }
+  .title-value{
+    margin: $spacing-xxs;
+    font-family: $font-family-base;
+    font-size: clamp(0.9rem, 5vw, 1.9rem);
+    color: $color-text-primary;
     font-weight: 600;
+    user-select: none;
   }
 }
-
-.uc-subtext {
-  font-family: $font-family-base;
-  font-size: 0.875rem;
-  color: $color-text-secondary;
-  line-height: 1.4;
-  margin: 0;
+.inventory-search-options{
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
-@keyframes build-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
+.product-list {
+  flex: 1;
+  overflow-y: auto;
+  padding:  0 $spacing-xs 0 $spacing-xxs;
+}
+.sentinel {
+  height: 1px;
+}
+
+.inventory-footer{
+  display: flex;
+  flex-direction: row;
+  padding: $spacing-md;
+  justify-content: end;
+  align-items: center;
+  gap: $spacing-lg;
+  .create-product{
+    background-color: $color-primary;
+    border: 1px solid $color-border;
+    font-size: clamp(1.2rem, 5vw, 1.3rem);
+    color: $color-text-primary;
+    border-radius: $radius-sm;
+    padding: $spacing-xxs $spacing-xs;
   }
 }
