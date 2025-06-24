@@ -1,0 +1,82 @@
+@use '../../../../../../styles/variables' as *;
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  position: relative;
+
+  .icon-selector {
+    cursor: pointer;
+    padding: $spacing-xxs;
+    border: 1px solid $color-border;
+    background-color: $color-bg-input;
+    color: $color-text-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon-selected{
+      font-size: 1.7rem;
+    }
+  }
+
+  .icon-dropdown {
+    position: absolute;
+    top: 2.6em;
+    left: 0;
+    background-color: $color-bg-sidebar;
+    border: 1px solid $color-border;
+    padding: $spacing-xs;
+    border-radius: $radius-sm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    max-height: 10em;
+    max-width: 100%;
+    overflow-y: auto;
+    z-index: 100;
+    .icon-option {
+      flex: 0 0 calc(25% - 0.3em);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 4px;
+      i {
+        color: $color-text-primary;
+        font-size: 1.5em;
+      }
+
+      &:hover {
+        background-color: $color-border;
+      }
+
+      &.selected {
+        outline: 2px solid $color-text-primary;
+        outline-offset: -2px;
+      }
+    }
+  }
+
+  input {
+    background-color: $color-bg-input;
+    color: $color-text-primary;
+    border: 1px solid $color-border;
+    padding: $spacing-xs;
+    width: 100%;
+  }
+
+  input.invalid {
+    border: 1px solid red;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    i.material-icons {
+      font-size: 1.7rem;
+    }
+  }
+}

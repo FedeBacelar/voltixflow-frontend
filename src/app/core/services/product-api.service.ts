@@ -111,4 +111,53 @@ export class ProductApiService {
     }
     return this.productCategories$;
   }
+
+  /**
+   * Crea una nueva categoria
+   */
+  public createCategory(product: IProductCategory): Observable<IProductCategory> {
+    return this.http.post<IProductCategory>(`${this.baseUrl}/categories`, product)
+      .pipe(
+        take(1),
+        map((created) => {
+          this.productCategories$ = null;
+          return created;
+        }),
+        catchError(this.handleError('createCategory'))
+      );
+  }
+
+
+  /**
+   * Actualiza una categoria existente
+   */
+  public updateCategory(categoryId: number, product: IProductCategory): Observable<IProductCategory> {
+    return this.http.put<IProductCategory>(`${this.baseUrl}/categories/${categoryId}`, product)
+      .pipe(
+        take(1),
+        map((updated) => {
+          this.productCategories$ = null;
+          return updated;
+        }),
+        catchError(this.handleError('updateCategory'))
+      );
+  }
+
+  /**
+   * Borra una categoria existente
+   */
+  public deleteCategory(categoryId: number): Observable<boolean> {
+    return this.http.delete<IProduct>(`${this.baseUrl}/categories/${categoryId}`)
+      .pipe(
+        take(1),
+        map(() => {
+          this.productCategories$ = null;
+          return true;
+        }),
+        catchError(error => {
+          this.handleError('deleteCategory')(error);
+          return of(false);
+        })
+      );
+  }
 }

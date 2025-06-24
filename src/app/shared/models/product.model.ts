@@ -1,7 +1,8 @@
 export interface IProductCategory {
-  id: number;
+  id?: number;
   name: string;
   googleIcon: string;
+  isNew?: boolean;
 }
 
 export interface IProduct {

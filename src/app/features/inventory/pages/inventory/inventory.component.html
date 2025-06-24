@@ -17,6 +17,7 @@
 </div>
 
 <div class="inventory-footer">
+  <button class="create-product" (click)="openCreateCategoryModal = true">Editar Categorias</button>
   <button class="create-product" (click)="openCreateModal = true">Nuevo Producto</button>
 </div>
 
@@ -33,3 +34,6 @@
   (productEdited)="resetProductList()">
 </app-product-edit-modal>
 
+<app-categories-manager-modal
+  *ngIf="openCreateCategoryModal"
+  (close)="openCreateCategoryModal = false"></app-categories-manager-modal>

@@ -9,6 +9,9 @@ import {ProductItemComponent} from "../../components/product-item/product-item.c
 import {ProductCreateModalComponent} from "../../components/product-create-modal/product-create-modal.component";
 import {ProductEditModalComponent} from "../../components/product-edit-modal/product-edit-modal.component";
 import {HasPermissionDirective} from "../../../../shared/directives/has-permission.directive";
+import {
+  CategoriesManagerModalComponent
+} from "../../components/categories-manager-modal/categories-manager-modal.component";
 
 @Component({
   selector: 'app-inventory',
@@ -20,7 +23,8 @@ import {HasPermissionDirective} from "../../../../shared/directives/has-permissi
     ProductCreateModalComponent,
     ProductEditModalComponent,
     NgIf,
-    HasPermissionDirective
+    HasPermissionDirective,
+    CategoriesManagerModalComponent
   ],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.scss'
@@ -49,6 +53,7 @@ export class InventoryComponent implements AfterViewInit, OnDestroy{
 
   productSelected:IProduct | undefined = undefined;
   openCreateModal:boolean = false;
+  openCreateCategoryModal:boolean = false;
 
   constructor(private productApiService: ProductApiService) {}
 
