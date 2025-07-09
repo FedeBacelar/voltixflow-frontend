@@ -71,7 +71,7 @@ export class ClientApiService {
     return this.http.put<IClient>(`${this.baseUrl}/${clientId}`, client)
       .pipe(
         take(1),
-        catchError(this.handleError('getClientById'))
+        catchError(this.handleError('updateClient'))
       );
   }
 

@@ -1,0 +1,104 @@
+@use '../../../../../styles/variables' as *;
+
+:host {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.user-item {
+  width: 100%;
+  background-color: $color-card-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: $spacing-xxs $spacing-xs;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+}
+
+.user-info-primary{
+  display: flex;
+  flex-direction: row;
+  min-width: 300px;
+  align-items: center;
+}
+.user-image{
+  background-color: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  aspect-ratio: 1 / 1;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .user-icon{
+    color: $color-text-primary;
+    font-size: 2.9rem;
+  }
+}
+.user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .user-name{
+    margin: 0 $spacing-sm;
+    color: $color-text-primary;
+  }
+  .user-email{
+    margin: 0 $spacing-sm;
+    color: $color-text-secondary;
+  }
+}
+
+
+.user-info-secondary{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-role, .user-status{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex: 1;
+  .user-role-name{
+    text-align: center;
+    margin: 0;
+    font-weight: 100;
+    color: $color-text-primary;
+    font-size: 1em;
+    min-width: 100px;
+  }
+}
+.user-status{
+  flex: 1;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  .user-status-value{
+    text-align: center;
+    margin: 0;
+    color: $color-text-primary;
+    font-size: 0.9em;
+    font-weight: 100;
+    border-radius: $radius-sm;
+    padding: 2px $spacing-sm;
+    &.active{
+      background-color: $color-success;
+    }
+    &.inactive{
+      background-color: $color-danger;
+    }
+  }
+}
+
+.user-edit{
+  background-color: $color-bg-dark;
+  color: $color-text-primary;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: 2px $spacing-sm;
+}

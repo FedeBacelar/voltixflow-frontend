@@ -1,0 +1,81 @@
+<app-modal-container (close)="closeModal()">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" aria-labelledby="updateUserTitle">
+    <h2 class="form-title">Editar Usuario</h2>
+
+    <div class="form-group">
+      <label for="name">Nombre y apellido</label>
+      <input id="name" type="text" formControlName="name" required aria-required="true" placeholder="Nombre y apellido"/>
+      <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="error-message">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Email</label>
+      <input id="username" type="text" formControlName="username" required aria-required="true" placeholder="Email"/>
+      <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched" class="error-message">
+        El email es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group password-group">
+      <label for="password">Contraseña</label>
+
+      <div class="password-wrapper">
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          required
+          aria-required="true"
+        />
+        <span class="material-icons eye-icon clickable" (click)="togglePasswordVisibility()">
+      {{ showPassword ? 'visibility_off' : 'visibility' }}
+    </span>
+      </div>
+
+      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error-message">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <div class="dual-form-group">
+      <div class="form-group">
+        <label for="roleId">Estado</label>
+        <select id="roleId" formControlName="roleId" required aria-required="true">
+          <ng-container *ngFor="let role of userRoles">
+            <option [ngValue]="role.id">{{role.name}}</option>
+          </ng-container>
+        </select>
+        <div *ngIf="form.get('roleId')?.invalid && form.get('roleId')?.touched" class="error-message">
+          Seleccione un rol válido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Estado</label>
+        <select id="status" formControlName="status" required aria-required="true">
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
+        <div *ngIf="form.get('status')?.invalid && form.get('status')?.touched" class="error-message">
+          Seleccione un estado válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <button type="button" (click)="closeModal()">Cancelar</button>
+      <div class="footer-divider">
+        <button type="button" class="delete" (click)="openDeleteDialog = true">Borrar</button>
+        <button type="submit" [disabled]="form.invalid">Modificar</button>
+      </div>
+    </div>
+  </form>
+</app-modal-container>
+
+<app-confirm-dialog *ngIf="openDeleteDialog"
+                    [message]="'¿Seguro que querés eliminar este usuario?'"
+                    (confirm)="deleteUser()"
+                    (cancel)="openDeleteDialog = false"
+></app-confirm-dialog>
